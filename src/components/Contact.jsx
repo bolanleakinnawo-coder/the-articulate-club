@@ -14,28 +14,34 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const whatsappMessage = `Hello Articulate Team,
+    try {
+      const response = await fetch("https://formspree.io/f/xqergzbe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-*Name:* ${form.name}
-*Email:* ${form.email}
+      if (response.ok) {
+        alert("Your message has been sent successfully!");
 
-*Message:*
-${form.message}`;
-
-    const url = `https://wa.me/2348133146418?text=${encodeURIComponent(
-      whatsappMessage,
-    )}`;
-
-    window.open(url, "_blank");
-
-    setForm({
-      name: "",
-      email: "",
-      message: "",
-    });
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Unable to send your message.");
+    }
   };
 
   return (
@@ -44,22 +50,36 @@ ${form.message}`;
         <div className="contact-left">
           <p className="contact-eyebrow">GET IN TOUCH</p>
 
-          <h2 className="contact-title">Contact</h2>
+          <h2 className="contact-title">We’d Love to Hear From You.</h2>
+          <p>
+            Whether you have a question, a collaboration opportunity, or you’d
+            like to work together, we’d love to hear from you.{" "}
+          </p>
 
           <div className="contact-list">
             <div className="contact-item">
               <span>★</span>
-              <p>Business Enquiries</p>
+              <p> Brand Partnerships</p>
             </div>
 
             <div className="contact-item">
               <span>★</span>
-              <p>Partnerships</p>
+              <p>Sponsorships</p>
             </div>
 
             <div className="contact-item">
               <span>★</span>
               <p>Speaking Invitations</p>
+            </div>
+
+            <div className="contact-item">
+              <span>★</span>
+              <p> Workshop & Training Requests</p>
+            </div>
+
+            <div className="contact-item">
+              <span>★</span>
+              <p>The Articulate Academy Enquiries</p>
             </div>
           </div>
         </div>
@@ -77,7 +97,7 @@ ${form.message}`;
 
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Email address"
               name="email"
               value={form.email}
               onChange={handleChange}

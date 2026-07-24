@@ -27,30 +27,28 @@ export default function About() {
       <div className="about-story">
         <div className="about-story-inner">
           {/* Left - Image */}
-          <div className="about-portrait">
-            <img src={AboutImg} alt="Azimah, Founder of The Articulate Club" />
-          </div>
 
           {/* Right - Story */}
           <div className="about-story-text">
             <p>
-              Many people are intelligent but struggle to express themselves
-              with confidence. Some speak too fast. Some second-guess every
-              word. Others stay silent because they're afraid of getting it
-              wrong.
+              I believe too many people stay silent, not because they have
+              nothing to say, but because they struggle to express themselves
+              with confidence.
             </p>
-
             <p>
-              The Articulate Club was created to change that. Through consistent
-              practice, meaningful conversations, and a supportive community, we
-              help people become confident communicators—one week at a time.
+              That’s why I created The Articulate Club. A place where
+              communication isn’t just taught. It’s practised. Where mistakes
+              are welcomed, growth is intentional, and every member has the
+              opportunity to become a more confident, articulate communicator.
+              Today, that vision has grown into a global community of people who
+              are choosing to show up, practise consistently, and find their
+              voice together.
             </p>
 
             <blockquote className="about-quote">
-              “...a community that feels like home.”
-              <cite>— Azimah, Founder</cite>
+              Azimah
+              <cite>— Founder, The Articulate Club</cite>
             </blockquote>
-
             {/* Mission & Vision */}
             <div className="about-cards">
               <div className="about-card">
@@ -59,9 +57,9 @@ export default function About() {
                 <h3>Mission</h3>
 
                 <p>
-                  To help people become confident, articulate, and intentional
-                  communicators through practical speaking experiences and
-                  genuine community.
+                  To help you become a confident, articulate, and intentional
+                  communicator through consistent practice, practical speaking
+                  experiences, and a supportive community.
                 </p>
               </div>
 
@@ -71,8 +69,8 @@ export default function About() {
                 <h3>Vision</h3>
 
                 <p>
-                  To become one of Africa's most trusted communities for raising
-                  confident voices and impactful communicators.
+                  To build a trusted global community where every voice is
+                  trained to communicate with confidence, clarity, and purpose.
                 </p>
               </div>
             </div>
@@ -102,13 +100,7 @@ export default function About() {
       </div>
 
       {/* ================= Closing ================= */}
-      <div className="about-closing">
-        <p>Wherever you're starting from, there's a place for you here.</p>
-
-        <Link to="/journey" className="about-closing-link">
-          See the Weekly Journey →
-        </Link>
-      </div>
+     
     </section>
   );
 }

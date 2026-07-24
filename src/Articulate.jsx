@@ -21,6 +21,8 @@ import CommentSection from "./components/CommentSection";
 import Academy from "./components/Academy";
 import Contact from "./components/Contact";
 import JoinModal from "./components/JoinModal";
+import CommunityWall from "./components/Testimonials"; // Import the CommunityWall component
+import Footer from "./components/Footer";
 
 const NAV_LINKS = ["About", "Journey", "Join", "Academy"];
 
@@ -122,23 +124,30 @@ export default function ArticulateClubHome() {
           </button>
         </div>
       </nav>
-
       {/* HERO */}
       <Hero openModal={() => setShowModal(true)} />
       <Countries />
       <About />
-
       <Journey />
-      <Testimonials />
-      <CommentSection />
+      <CommunityWall />
+      {/* <CommentSection /> */}
       <Academy />
       <Contact />
       {/* CLOSING OLIVE BAND */}
       <section className="ac-closing">
         <Reveal>
-          <p className="ac-closing-quote">
-            "Your voice is more powerful than you think."
+          <h2 className="ac-closing-title">Don’t Hold Back.</h2>
+
+          <p className="ac-closing-text">
+            The world needs what you have to say.
           </p>
+
+          <p className="ac-closing-quote">
+            <strong>
+              Remember: Your voice is more powerful than you think.
+            </strong>
+          </p>
+
           <button className="btn-primary" onClick={() => setShowModal(true)}>
             Join The Articulate Club
             <ArrowRight size={16} />
@@ -146,6 +155,7 @@ export default function ArticulateClubHome() {
         </Reveal>
       </section>
       <JoinModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <Footer />
     </div>
   );
 }

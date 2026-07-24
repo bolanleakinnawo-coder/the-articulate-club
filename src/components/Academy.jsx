@@ -48,13 +48,22 @@ export default function Academy() {
   return (
     <section className="academy">
       <div className="academy-container">
-        <p className="academy-eyebrow">EARLY ACCESS</p>
+        <p className="academy-eyebrow">TAKE YOUR GROWTH FURTHER.</p>
 
-        <h2 className="academy-title">Articulate Academy</h2>
+        <h2 className="academy-title">THE ARTICULATE ACADEMY</h2>
 
         <p className="academy-text">
-          A premium mentorship experience for individuals who want deeper
-          coaching, personalised guidance, and lasting transformation.
+          The Articulate Academy is the premium learning arm of The Articulate
+          Club, created for individuals who want deeper, personalised coaching,
+          structured learning, and practical speaking experiences that help you
+          grow into a confident, articulate communicator.
+        </p>
+        <p className="academy-text">
+          Whether you’re looking to become a more articulate and confident
+          speaker, strengthen your workplace or daily communication, prepare for
+          important opportunities, or continue growing as a communicator, the
+          Academy gives you the guidance, practical experience, and personalised
+          feedback you need to get there.
         </p>
 
         {/* Benefits */}
@@ -62,12 +71,22 @@ export default function Academy() {
         <div className="academy-list">
           <div className="academy-item">
             <div className="academy-icon">✓</div>
-            <p>Communication audit</p>
+            <p>Structured communication programmes</p>
           </div>
 
           <div className="academy-item">
             <div className="academy-icon">✓</div>
-            <p>Structured curriculum</p>
+            <p> Small group coaching</p>
+          </div>
+
+          <div className="academy-item">
+            <div className="academy-icon">✓</div>
+            <p> One-on-one mentorship</p>
+          </div>
+
+          <div className="academy-item">
+            <div className="academy-icon">✓</div>
+            <p>Live workshops and masterclasses</p>
           </div>
 
           <div className="academy-item">
@@ -77,17 +96,7 @@ export default function Academy() {
 
           <div className="academy-item">
             <div className="academy-icon">✓</div>
-            <p>Small group coaching</p>
-          </div>
-
-          <div className="academy-item">
-            <div className="academy-icon">✓</div>
-            <p>Live workshops</p>
-          </div>
-
-          <div className="academy-item">
-            <div className="academy-icon">✓</div>
-            <p>Progress tracking</p>
+            <p> Practical speaking experiences</p>
           </div>
         </div>
 
@@ -97,7 +106,7 @@ export default function Academy() {
           <h3>Join the Waitlist</h3>
 
           <p className="subtitle">
-            Be the first to know when applications open.
+            Be the first to hear about new programmes and upcoming cohorts.
           </p>
 
           <form className="waitlist-form" onSubmit={handleSubmit}>
@@ -122,7 +131,7 @@ export default function Academy() {
             <input
               type="tel"
               name="phone"
-              placeholder="Phone Number"
+              placeholder=" WhatsApp Number (with country code)"
               value={form.phone}
               onChange={handleChange}
               required

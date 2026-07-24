@@ -11,18 +11,14 @@ const METHOD_ITEMS = [
   {
     icon: Compass,
     title: "Structured Journey",
-    copy: "A repeatable seven day rhythm, not a random feed of tips.",
+    copy: "Every week inside The Articulate Club, you’ll follow a structured learning journey designed to help you become a more confident and articulate communicator through consistent practice.",
   },
   {
     icon: Sparkles,
     title: "Practical Practice",
-    copy: "Small daily actions that build your voice, not more theory.",
+    copy: "From speaking exercises and reading challenges to live coaching sessions and reflection activities, every day has a purpose",
   },
-  {
-    icon: Users,
-    title: "Real Community",
-    copy: "People practicing alongside you, every single week.",
-  },
+ 
 ];
 
 const WEEK = [
@@ -77,7 +73,7 @@ const Journey = () => {
           <Reveal>
             <div className="ac-method-header">
               <div className="ac-eyebrow">THE ARTICULATE METHOD</div>
-              <h2 className="ac-h2">A Journey You Repeat Every Week</h2>
+              <h2 className="ac-h2">Your Weekly Communication Journey</h2>
             </div>
           </Reveal>
 
@@ -108,6 +104,22 @@ const Journey = () => {
             </div>
           </Reveal>
         </div>
+      </section>
+      <section>
+        <section>
+          <div className="about-closing">
+            <p>Curious how it works?</p>
+
+            <a
+              href="/handbook.pdf"
+              className="about-closing-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the Membership Handbook →
+            </a>
+          </div>
+        </section>
       </section>
     </div>
   );

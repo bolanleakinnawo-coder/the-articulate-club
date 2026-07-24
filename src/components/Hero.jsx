@@ -10,32 +10,32 @@ const Hero = ({ openModal }) => {
       <div className="hero-grid">
         {/* LEFT CONTENT */}
         <div>
-          <div className="hero-badge">Hi, I'm Azimah.</div>
+          <div className="hero-badge">Find your voice.</div>
 
           <h1 className="hero-headline">
             Become a More Confident, Articulate Communicator.
           </h1>
 
           <p className="hero-subhead">
-            A free, structured community where practice, not theory, builds your
-            voice.
+            A free, structured community where practice, not theory, transforms
+            the way you communicate.
           </p>
 
           <div className="hero-cta-row">
             <button className="btn-primary" onClick={openModal}>
-              Join The Club
+              Join The Articulate Club.
             </button>
-
-            <a href="#about" className="btn-secondary">
-              Learn More
+            <a href="/handbook.pdf" className="btn-secondary">
+              Read the Member Handbook
             </a>
           </div>
 
           <div className="hero-stats">
             {[
-              ["3,500+", "Members"],
-              ["Free", "Community"],
+              ["4,000+", "Members"],
+              ["100% Free", "Community"],
               ["Weekly", "Activities"],
+              ["15+", "Countries"],
             ].map(([number, label]) => (
               <div key={label}>
                 <div className="hero-stat-num">{number}</div>
@@ -48,15 +48,9 @@ const Hero = ({ openModal }) => {
         {/* RIGHT IMAGE */}
         <div className="hero-portrait">
           <img src={heroPortrait} alt="Azimah" />
-
           <div className="hero-live-card">
-            <Circle
-              size={9}
-              className="pulse-dot"
-              fill="#3B4A2C"
-              color="#3B4A2C"
-            />
-            Live Every Saturday
+            <span className="founder-name">Azimah</span>
+            <span className="founder-role">Founder, The Articulate Club</span>
           </div>
         </div>
       </div>
