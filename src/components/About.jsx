@@ -30,24 +30,30 @@ export default function About() {
 
           {/* Right - Story */}
           <div className="about-story-text">
+            <p>Communication is a skill that can be learned.</p>
+            <br />
             <p>
-              I believe too many people stay silent, not because they have
-              nothing to say, but because they struggle to express themselves
-              with confidence.
+              No matter where you’re starting from, you can become more
+              confident, more articulate, and more intentional in the way you
+              communicate.
             </p>
+            <br />
+            <p>That’s why The Articulate Club exists.</p>
+            <br />
             <p>
-              That’s why I created The Articulate Club. A place where
-              communication isn’t just taught. It’s practised. Where mistakes
-              are welcomed, growth is intentional, and every member has the
-              opportunity to become a more confident, articulate communicator.
-              Today, that vision has grown into a global community of people who
-              are choosing to show up, practise consistently, and find their
-              voice together.
+              A place to learn, practise, make mistakes, ask questions, and grow
+              alongside people who are on the same journey.
             </p>
+            <br />
 
+            <p>
+              I’m grateful you’re here, and I hope you enjoy every step of the
+              journey.
+            </p>
+            <br />
             <blockquote className="about-quote">
               Azimah
-              <cite>— Founder, The Articulate Club</cite>
+              <cite>Founder & Communication Coach</cite>
             </blockquote>
             {/* Mission & Vision */}
             <div className="about-cards">
@@ -100,7 +106,6 @@ export default function About() {
       </div>
 
       {/* ================= Closing ================= */}
-     
     </section>
   );
 }

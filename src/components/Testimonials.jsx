@@ -118,9 +118,9 @@ export default function CommunityWall() {
         <h2 className="community-title">Our Community Wall</h2>
 
         <p className="community-description">
-          Every story here comes from a member of The Articulate Club. Share
-          your experience with us. Your story will be reviewed before it appears
-          on the Community Wall.
+          Every journey looks different. Here, members of The Articulate Club
+          share their experiences, celebrate their progress, and reflect on how
+          their communication is evolving.
         </p>
 
         {/* FORM */}
@@ -186,7 +186,7 @@ export default function CommunityWall() {
 
         {loading ? (
           <div className="community-empty">
-            <h3>Loading Community Wall...</h3>
+            <h3>Loading Members Stories...</h3>
           </div>
         ) : stories.length === 0 ? (
           <div className="community-empty">

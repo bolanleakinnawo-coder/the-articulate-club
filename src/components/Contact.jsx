@@ -49,13 +49,12 @@ export default function Contact() {
       <div className="contact-container">
         <div className="contact-left">
           <p className="contact-eyebrow">GET IN TOUCH</p>
-
           <h2 className="contact-title">We’d Love to Hear From You.</h2>
           <p>
             Whether you have a question, a collaboration opportunity, or you’d
-            like to work together, we’d love to hear from you.{" "}
-          </p>
-
+            like to work together, we’d love to hear from you.
+          </p>{" "}
+          <br />
           <div className="contact-list">
             <div className="contact-item">
               <span>★</span>

@@ -10,25 +10,19 @@ import {
 const METHOD_ITEMS = [
   {
     icon: Compass,
-    title: "Structured Journey",
-    copy: "Every week inside The Articulate Club, you’ll follow a structured learning journey designed to help you become a more confident and articulate communicator through consistent practice.",
+    title: "A Clear Weekly Structure",
+    copy: "Never wonder what to practise next. Every day has a clear focus designed to help you become a more confident and articulate communicator.",
   },
   {
     icon: Sparkles,
-    title: "Practical Practice",
-    copy: "From speaking exercises and reading challenges to live coaching sessions and reflection activities, every day has a purpose",
+    title: " Practice, Not Just Theory",
+    copy: "Communication isn’t learned by reading alone. Every lesson is followed by an opportunity to practise what you’ve learned.",
   },
- 
-];
-
-const WEEK = [
-  { day: "MON", label: "Shadow Monday" },
-  { day: "TUE", label: "Reading Tuesday" },
-  { day: "WED", label: "Word Power" },
-  { day: "THU", label: "Thinking Aloud" },
-  { day: "FRI", label: "Feedback Friday" },
-  { day: "SAT", label: "Live Session" },
-  { day: "SUN", label: "Reflection" },
+  {
+    icon: Users,
+    title: "A Community That Keeps You Consistent",
+    copy: "It’s easier to grow, stay accountable, and keep showing up when you’re surrounded by people on the same journey.",
+  },
 ];
 
 function useReveal() {
@@ -90,33 +84,22 @@ const Journey = () => {
               </Reveal>
             ))}
           </div>
-
-          <Reveal>
-            <div className="week-row">
-              <div className="week-row-line" />
-              {WEEK.map((d) => (
-                <div key={d.day} className="week-item">
-                  <div className="week-dot" />
-                  <div className="week-day">{d.day}</div>
-                  <div className="week-label">{d.label}</div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
       <section>
         <section>
           <div className="about-closing">
-            <p>Curious how it works?</p>
+            <p>
+              Curious what you’ll be doing every day inside The Articulate Club?
+            </p>
 
             <a
               href="/handbook.pdf"
-              className="about-closing-link"
+              className="about-closing-btn"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Read the Membership Handbook →
+              Explore our Member Handbook →
             </a>
           </div>
         </section>
