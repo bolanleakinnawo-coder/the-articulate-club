@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   Compass,
@@ -24,8 +25,11 @@ import JoinModal from "./components/JoinModal";
 import CommunityWall from "./components/Testimonials"; // Import the CommunityWall component
 import Footer from "./components/Footer";
 
-const NAV_LINKS = ["About", "Journey", "Join", "Academy"];
-
+const NAV_LINKS = [
+  { label: "Home", to: "/" },
+  { label: "The Articulate Academy", to: "/academy" },
+  { label: "Contact", to: "/contact" },
+];
 function useReveal() {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -80,18 +84,27 @@ export default function ArticulateClubHome() {
         </div>
 
         {/* Desktop Navigation */}
+        {/* Desktop Navigation */}
         <div className="nav-links desktop-nav">
           {NAV_LINKS.map((link) => (
-            <a key={link} href="#" className="nav-link">
-              {link}
-            </a>
+            <Link key={link.label} to={link.to} className="nav-link">
+              {link.label}
+            </Link>
           ))}
+
+          <a
+            href="/handbook.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+          >
+            Member Handbook
+          </a>
 
           <button className="btn-light" onClick={() => setShowModal(true)}>
             Join The Club
           </button>
         </div>
-
         {/* Hamburger */}
         <button
           className="hamburger"
@@ -101,17 +114,28 @@ export default function ArticulateClubHome() {
         </button>
 
         {/* Mobile Menu */}
+        {/* Mobile Menu */}
         <div className={`mobile-nav ${mobileMenuOpen ? "open" : ""}`}>
           {NAV_LINKS.map((link) => (
-            <a
-              key={link}
-              href="#"
+            <Link
+              key={link.label}
+              to={link.to}
               className="nav-link"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           ))}
+
+          <a
+            href="/handbook.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Member Handbook
+          </a>
 
           <button
             className="btn-light"

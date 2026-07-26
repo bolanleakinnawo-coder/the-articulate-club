@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 export default function Footer() {
   return (
@@ -7,84 +9,48 @@ export default function Footer() {
         {/* Brand */}
 
         <div className="footer-brand">
-          <h2>The Articulate Club</h2>
-
-          <p>
-            Helping people become confident, articulate, and intentional
-            communicators through consistent practice and community.
-          </p>
-        </div>
-
-        {/* Quick Links */}
-
-        <div className="footer-links">
-          <h3>Quick Links</h3>
-
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-
-            <li>
-              <a
-                href="/MemberHandbook.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Member Handbook
-              </a>
-            </li>
-
-            <li>
-              <Link to="/academy">The Articulate Academy</Link>
-            </li>
-
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
+          <h2>Connect with Azimah</h2>
         </div>
 
         {/* Socials */}
 
         <div className="footer-links">
-          <h3>Connect with Azimah</h3>
-
-          <ul>
-            <li>
-              <a
-                href="https://instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://tiktok.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                TikTok
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://wa.me/2348133146418"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp
-              </a>
-            </li>
-
-            <li>
-              <a href="mailto:theazimahofficial@gmail.com">Email</a>
-            </li>
-          </ul>
+          <div className="footer-socials">
+            <a
+              href="https://www.instagram.com/the_azimah?igsh=MWF0NWcyZnQ4bGRxYg%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="social-icon"
+            >
+              <FaInstagram size={20} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@the_azimah?_r=1&_t=ZS-98Loo5UG4BR"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              className="social-icon"
+            >
+              <FaTiktok size={20} />
+            </a>
+            <a
+              href="https://wa.me/message/VVAUUQXJO2DZO1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="social-icon"
+            >
+              <FaWhatsapp size={20} />
+            </a>
+            <a
+              href="mailto:theazimahofficial@gmail.com"
+              aria-label="Email"
+              className="social-icon"
+            >
+              <MdEmail size={20} />
+            </a>
+          </div>
         </div>
       </div>
 

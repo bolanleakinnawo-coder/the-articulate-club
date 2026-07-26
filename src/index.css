@@ -639,14 +639,14 @@
 
 .about-quote {
   font-size: 30px;
-  font-style: italic;
+  font-weight: 700;
   color: #2e3a22;
 }
 
 .about-quote cite {
   display: block;
 
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 1px;
 
   color: #7b806d;
@@ -786,6 +786,7 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
+  margin-bottom: 20px;
 
   transition: all 0.3s ease;
 }
@@ -2340,4 +2341,156 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.community-form-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.community-form-row input {
+  flex: 1;
+}
+
+.community-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.community-count {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.community-location {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.community-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.community-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+/* Add select to match input/textarea styling */
+.community-form input,
+.community-form textarea,
+.community-form select {
+  width: 100%;
+  border: 1px solid #d8dfca;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+  resize: vertical;
+  font-family: inherit;
+  background: white;
+  color: #272b21;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.community-form select:focus,
+.community-form input:focus,
+.community-form textarea:focus {
+  border-color: #7d9362;
+}
+
+/* Remove the old duplicate country-select rule and replace with this */
+.community-country-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235b6350' stroke-width='2'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+/* Comment count number (e.g. 1/90) — sits on the dark community-wall bg */
+.community-count {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #eef2e7;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #3f5132;
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-start;
+  font-family: inherit;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.read-more-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.read-more-btn:hover {
+  color: #2d3a23;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  background: #9cb185;
+  border-color: #9cb185;
+  transform: translateY(-3px);
 }
