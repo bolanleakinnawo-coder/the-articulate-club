@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { db } from "../firebase/firebase"; // adjust path if needed
@@ -65,6 +65,16 @@ export default function CommunityWall() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const dotRefs = useRef([]);
+
+  useEffect(() => {
+    dotRefs.current[currentSlide]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [currentSlide]);
+
   useEffect(() => {
     const storiesRef = ref(db, "communityWall");
 
@@ -99,12 +109,13 @@ export default function CommunityWall() {
     currentSlide * cardsPerSlide + 1,
     stories.length || 1,
   );
-
   const nextSlide = () => {
+    setExpandedIds({});
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };
 
   const prevSlide = () => {
+    setExpandedIds({});
     setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   };
 
@@ -255,7 +266,9 @@ export default function CommunityWall() {
           </div>
         ) : stories.length === 0 ? (
           <div className="community-empty">
-            <div className="community-empty-icon">💬</div>
+            <div iv className="community-empty-icon">
+              💬
+            </div>
 
             <h3>Be the first to share your story.</h3>
 
@@ -297,7 +310,11 @@ export default function CommunityWall() {
                                 item.name?.charAt(0).toUpperCase()}
                             </div>
 
-                            <p className="community-story">{displayText}</p>
+                            <p
+                              className={`community-story ${isExpanded ? "expanded" : ""}`}
+                            >
+                              {item.story}
+                            </p>
 
                             {isLong && (
                               <button
@@ -340,6 +357,7 @@ export default function CommunityWall() {
                   length: totalSlides,
                 }).map((_, index) => (
                   <span
+                    ref={(el) => (dotRefs.current[index] = el)}
                     key={index}
                     className={`dot ${currentSlide === index ? "active" : ""}`}
                     onClick={() => setCurrentSlide(index)}
