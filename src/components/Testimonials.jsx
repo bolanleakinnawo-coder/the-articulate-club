@@ -6,7 +6,7 @@ import countryList from "react-select-country-list";
 import { db } from "../firebase/firebase"; // adjust path if needed
 import { ref, push, onValue } from "firebase/database";
 
-const STORY_LIMIT = 70;
+const STORY_LIMIT = 150;
 
 export default function CommunityWall() {
   // Country options for the searchable dropdown
