@@ -33,11 +33,10 @@ export default function WhatsAppGroupsModal({ isOpen, onClose }) {
           ×
         </button>
 
-        <h2>Choose The Articulate Group</h2>
+        <h2>Join The Articulate Group</h2>
 
         <p>
-          Select any available group below to join The Articulate Club
-          community.
+          Choose any group below. If your preferred group is full, simply join another one.
         </p>
 
         <div className="groups-list">

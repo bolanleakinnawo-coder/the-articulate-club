@@ -974,14 +974,6 @@
 }
 .community-form input,
 .community-form textarea,
-.community-country-select {
-  width: 100%;
-  border: 1px solid #d8dfca;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 18px;
-  font: inherit;
-}
 .community-form textarea {
   resize: vertical;
 }
@@ -991,7 +983,9 @@
   outline: none;
   border-color: #7d9362;
 }
-
+.community-country-select {
+  margin-bottom: 20px;
+}
 .community-form-footer {
   display: flex;
   justify-content: space-between;
@@ -2295,15 +2289,6 @@
   border-color: #7d9362;
 }
 
-/* Remove the old duplicate country-select rule and replace with this */
-.community-country-select {
-  cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235b6350' stroke-width='2'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  padding-right: 40px;
-}
-
 /* Comment count number (e.g. 1/90) — sits on the dark community-wall bg */
 .community-count {
   font-size: 0.95rem;
@@ -2762,4 +2747,30 @@
   .tab-btn {
     width: 100%;
   }
+}
+
+.community-location {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+.community-footer .community-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  color: #5b6350;
+}
+
+.location-icon {
+  flex-shrink: 0;
+}
+
+.about-quote-author{
+font-size: 0.9rem;
+font-style: italic;
+font-weight: 500;
 }

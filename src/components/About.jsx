@@ -53,7 +53,7 @@ export default function About() {
             <br />
             <blockquote className="about-quote">
               Azimah
-              <cite>Founder & Communication Coach</cite>
+              <p className="about-quote-author">Founder & Communication Coach</p>
             </blockquote>
             {/* Mission & Vision */}
             <div className="about-cards">

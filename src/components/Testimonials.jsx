@@ -1,38 +1,24 @@
-import { useEffect, useState, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState, useRef, useMemo } from "react";
+import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import Select from "react-select";
+import countryList from "react-select-country-list";
 
 import { db } from "../firebase/firebase"; // adjust path if needed
-
 import { ref, push, onValue } from "firebase/database";
-
-const countries = [
-  { code: "ng", name: "Nigeria" },
-  { code: "gh", name: "Ghana" },
-  { code: "zm", name: "Zambia" },
-  { code: "qa", name: "Qatar" },
-  { code: "cm", name: "Cameroon" },
-  { code: "lr", name: "Liberia" },
-  { code: "fr", name: "France" },
-  { code: "ug", name: "Uganda" },
-  { code: "za", name: "South Africa" },
-  { code: "ci", name: "Côte d'Ivoire" },
-  { code: "gn", name: "Guinea" },
-  { code: "bj", name: "Benin Republic" },
-  { code: "gm", name: "The Gambia" },
-  { code: "rw", name: "Rwanda" },
-  { code: "my", name: "Malaysia" },
-];
 
 const STORY_LIMIT = 70;
 
 export default function CommunityWall() {
+  // Country options for the searchable dropdown
+  const options = useMemo(() => countryList().getData(), []);
+
   // Stories from Firebase
   const [stories, setStories] = useState([]);
 
   // Form
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState(""); // stores the country name (string)
   const [story, setStory] = useState("");
 
   // UI
@@ -59,9 +45,7 @@ export default function CommunityWall() {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -109,6 +93,7 @@ export default function CommunityWall() {
     currentSlide * cardsPerSlide + 1,
     stories.length || 1,
   );
+
   const nextSlide = () => {
     setExpandedIds({});
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -157,7 +142,6 @@ export default function CommunityWall() {
       }, 5000);
     } catch (err) {
       console.log(err);
-
       alert("Unable to submit your story.");
     }
 
@@ -168,11 +152,8 @@ export default function CommunityWall() {
     <section className="community-wall">
       <div className="community-container">
         {/* Heading */}
-
         <p className="community-eyebrow">REAL VOICES, REAL GROWTH</p>
-
         <h2 className="community-title">Our Community Wall</h2>
-
         <p className="community-description">
           Every journey looks different. Here, members of The Articulate Club
           share their experiences, celebrate their progress, and reflect on how
@@ -180,7 +161,6 @@ export default function CommunityWall() {
         </p>
 
         {/* FORM */}
-
         <form className="community-form" onSubmit={handleSubmit}>
           <h3>Share Your Experience</h3>
 
@@ -210,21 +190,37 @@ export default function CommunityWall() {
             />
           </div>
 
-          <select
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            required
+          {/* Searchable country dropdown — type to filter the full country list */}
+          <Select
+            value={options.find((option) => option.value === country) || null}
+            onChange={(selectedOption) =>
+              setCountry(selectedOption ? selectedOption.value : "")
+            }
+            options={options}
+            placeholder="Select your country"
+            isSearchable
+            isClearable
             className="community-country-select"
-          >
-            <option value="" disabled>
-              Select your country
-            </option>
-            {countries.map((c) => (
-              <option key={c.code} value={c.name}>
-                {c.name}
-              </option>
-            ))}
-          </select>
+            classNamePrefix="community-country-select"
+            styles={{
+              control: (base) => ({
+                ...base,
+                border: "1px solid #ccc",
+                borderRadius: "8px",
+                boxShadow: "none",
+                minHeight: "44px",
+                "&:hover": { border: "1px solid #ccc" },
+              }),
+              input: (base) => ({
+                ...base,
+                border: "none",
+                boxShadow: "none",
+                padding: 0,
+                margin: 0,
+              }),
+              indicatorSeparator: () => ({ display: "none" }),
+            }}
+          />
 
           <textarea
             rows="6"
@@ -249,7 +245,6 @@ export default function CommunityWall() {
         </form>
 
         {/* COMMUNITY WALL */}
-
         <div className="community-heading">
           <h3>Recent Stories</h3>
 
@@ -266,9 +261,7 @@ export default function CommunityWall() {
           </div>
         ) : stories.length === 0 ? (
           <div className="community-empty">
-            <div iv className="community-empty-icon">
-              💬
-            </div>
+            <div className="community-empty-icon">💬</div>
 
             <h3>Be the first to share your story.</h3>
 
@@ -313,7 +306,7 @@ export default function CommunityWall() {
                             <p
                               className={`community-story ${isExpanded ? "expanded" : ""}`}
                             >
-                              {item.story}
+                              {displayText}
                             </p>
 
                             {isLong && (
@@ -328,13 +321,12 @@ export default function CommunityWall() {
 
                             <div className="community-footer">
                               <div className="community-line" />
-
                               <h4>{item.name}</h4>
-
                               <span>Member, The Articulate Club</span>
 
                               {item.country && (
                                 <span className="community-location">
+                                  <MapPin size={14} className="location-icon" />
                                   {item.country}
                                 </span>
                               )}

@@ -36,6 +36,8 @@ const Hero = ({ openModal }) => {
               ["Free", "Community"],
 
               ["15+", "Countries"],
+              
+              ["Daily", "Activities"],
             ].map(([number, label]) => (
               <div key={label}>
                 <div className="hero-stat-num">{number}</div>
