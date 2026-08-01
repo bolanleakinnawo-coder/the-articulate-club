@@ -23,7 +23,7 @@ const Hero = ({ openModal }) => {
 
           <div className="hero-cta-row">
             <button className="btn-primary" onClick={openModal}>
-              Join The Articulate Club.
+              Join The Articulate Club
             </button>
             <a href="/handbook.pdf" className="btn-secondary">
               Read the Member Handbook
@@ -36,7 +36,7 @@ const Hero = ({ openModal }) => {
               ["Free", "Community"],
 
               ["15+", "Countries"],
-              
+
               ["Daily", "Activities"],
             ].map(([number, label]) => (
               <div key={label}>

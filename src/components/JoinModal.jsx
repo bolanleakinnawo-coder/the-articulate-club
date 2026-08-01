@@ -14,7 +14,7 @@ export default function JoinModal({ isOpen, onClose }) {
             ×
           </button>
 
-          <h2>Join Articulate Club</h2>
+          <h2>Join The Articulate Club</h2>
 
           <p>
             Become part of our growing community and improve your communication
