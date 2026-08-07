@@ -192,9 +192,9 @@ export default function CommunityWall() {
 
           {/* Searchable country dropdown — type to filter the full country list */}
           <Select
-            value={options.find((option) => option.value === country) || null}
+            value={options.find((option) => option.label === country) || null}
             onChange={(selectedOption) =>
-              setCountry(selectedOption ? selectedOption.value : "")
+              setCountry(selectedOption ? selectedOption.label : "")
             }
             options={options}
             placeholder="Select your country"
