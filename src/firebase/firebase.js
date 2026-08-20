@@ -6,6 +6,7 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyDyHf6dv4ASIp4zzOaBYuwktZg3acGs0zM",
   authDomain: "articulate-group.firebaseapp.com",
+  databaseURL: "https://articulate-group-default-rtdb.firebaseio.com",
   projectId: "articulate-group",
   storageBucket: "articulate-group.firebasestorage.app",
   messagingSenderId: "529113337866",

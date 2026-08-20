@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
 import { ref, onValue, update, remove } from "firebase/database";
 import AdminChallenges from "../components/AdminChallenges";
-
+import AdminSubmissions from "../components/AdminSubmissions";
 export default function Admin() {
   const [stories, setStories] = useState([]);
   const [waitlist, setWaitlist] = useState([]);
@@ -109,6 +109,15 @@ export default function Admin() {
             onClick={() => setActiveTab("challenges")}
           >
             Challenges
+          </button>
+
+          <button
+            className={
+              activeTab === "submissions" ? "tab-btn active" : "tab-btn"
+            }
+            onClick={() => setActiveTab("submissions")}
+          >
+            Submissions
           </button>
         </div>
 
@@ -221,6 +230,7 @@ export default function Admin() {
         )}
 
         {activeTab === "challenges" && <AdminChallenges />}
+        {activeTab === "submissions" && <AdminSubmissions />}
       </div>
     </section>
   );

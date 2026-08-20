@@ -9,6 +9,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
+import ChallengeDetail from "./Pages/ChallengeDetail";
 
 function App() {
   return (
@@ -24,6 +25,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/challenges/:id"
+        element={
+          <ProtectedRoute>
+            <ChallengeDetail />
           </ProtectedRoute>
         }
       />

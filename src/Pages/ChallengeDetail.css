@@ -1,0 +1,319 @@
+:root {
+  --olive-deep: #3b4a2c;
+  --olive-deeper: #2e3a22;
+  --sage: #9cb185;
+  --sage-light: #eef1e5;
+  --sage-line: #d3dcc3;
+  --cream: #fbfaf6;
+  --ink: #272b21;
+  --ink-soft: #5b6350;
+  --white: #ffffff;
+}
+
+.cd-page {
+  font-family: "Poppins", sans-serif;
+  background: var(--cream);
+  min-height: 100vh;
+}
+
+.cd-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  background: var(--cream);
+}
+
+.cd-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--sage-line);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cd-back-btn {
+  background: none;
+  border: none;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+}
+
+.cd-logo {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--olive-deep);
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+}
+
+.cd-container {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 36px 24px 60px;
+}
+
+.cd-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sage-light);
+  color: var(--olive-deep);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 8px 16px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+
+.cd-title {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.cd-description {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin: 0 0 30px;
+}
+
+.cd-word-label {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+}
+
+.cd-word {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 26px;
+}
+
+.cd-meaning-box,
+.cd-mission-box {
+  display: flex;
+  gap: 14px;
+  background: var(--sage-light);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.cd-meaning-icon,
+.cd-mission-icon {
+  color: var(--olive-deep);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cd-meaning-label,
+.cd-mission-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--olive-deep);
+  margin: 0 0 6px;
+}
+
+.cd-meaning-text,
+.cd-mission-text {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cd-details-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+
+.cd-details-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--sage-line);
+}
+
+.cd-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.cd-detail-item svg {
+  color: var(--olive-deep);
+}
+
+/* Recorder */
+.recorder-box {
+  background: var(--white);
+  border: 1px solid var(--sage-line);
+  border-radius: 18px;
+  padding: 28px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.recorder-main-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--olive-deep);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 30px;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.recorder-main-btn:hover {
+  background: var(--olive-deeper);
+}
+
+.recorder-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.recorder-pulse {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #c0392b;
+  animation: recorderPulse 1.4s ease infinite;
+}
+
+@keyframes recorderPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.3);
+  }
+}
+
+.recorder-time {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.recorder-stop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #c0392b;
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 11px 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.recorder-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.recorder-audio {
+  width: 100%;
+}
+
+.recorder-preview-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.recorder-rerecord-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--sage-line);
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.recorder-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--olive-deep);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 11px 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.recorder-submit-btn:disabled,
+.recorder-rerecord-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cd-already-submitted {
+  background: var(--sage-light);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.cd-already-submitted p {
+  font-size: 14px;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+
+.cd-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--olive-deep);
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  margin-top: 8px;
+}
