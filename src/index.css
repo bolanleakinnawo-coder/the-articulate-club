@@ -11,6 +11,10 @@
   --ink-soft: #5b6350;
   --white: #ffffff;
 }
+
+body {
+  font-family: "Poppins", sans-serif;
+}
 #root {
   overflow-x: hidden;
 }

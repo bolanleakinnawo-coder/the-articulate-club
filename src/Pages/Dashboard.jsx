@@ -8,7 +8,9 @@ import {
   CheckCircle,
   Trophy,
   Clock,
+  Sparkles,
   Play,
+  Pause,
 } from "lucide-react";
 import { ref, query, orderByChild, equalTo, get } from "firebase/database";
 import { db } from "../firebase/firebase";
@@ -17,12 +19,20 @@ import {
   getMemberProfile,
   logoutLocal,
 } from "../firebase/authService";
+import {
+  getMemberRecentSubmission,
+  getWeekKey,
+} from "../firebase/challengeService";
 import "./dashboard.css";
+import logo from "../assets/logo.png";
 
 export default function Dashboard() {
   const [profile, setProfile] = useState(null);
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [recentSubmission, setRecentSubmission] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useState(() => new Audio())[0];
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,33 +43,60 @@ export default function Dashboard() {
     }
 
     (async () => {
-      const memberProfile = await getMemberProfile(uid);
-      setProfile(memberProfile);
-
       const challengesRef = ref(db, "challenges");
       const publishedQuery = query(
         challengesRef,
         orderByChild("status"),
-        equalTo("published"),
+        equalTo("published")
       );
-      const snap = await get(publishedQuery);
+
+      const [memberProfile, recent, snap] = await Promise.all([
+        getMemberProfile(uid),
+        getMemberRecentSubmission(uid),
+        get(publishedQuery),
+      ]);
+
+      setProfile(memberProfile);
+      setRecentSubmission(recent);
 
       if (snap.exists()) {
         const data = snap.val();
-        const list = Object.entries(data)
-          .map(([id, value]) => ({ id, ...value }))
-          .filter((c) => c.type !== "special");
-
+        const list = Object.entries(data).map(([id, value]) => ({
+          id,
+          ...value,
+        }));
         setChallenges(list);
       }
 
       setLoading(false);
     })();
+   
   }, [navigate]);
 
   const handleLogout = () => {
     logoutLocal();
     navigate("/login");
+  };
+
+  const togglePlay = () => {
+    if (!recentSubmission) return;
+
+    if (isPlaying) {
+      audioRef.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.src = recentSubmission.audioData;
+      audioRef.play();
+      setIsPlaying(true);
+      audioRef.onended = () => setIsPlaying(false);
+    }
+  };
+
+  const formatDuration = (secs) => {
+    if (!secs) return "0:00";
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m}:${s.toString().padStart(2, "0")}`;
   };
 
   const formatDeadline = (deadline) => {
@@ -83,22 +120,24 @@ export default function Dashboard() {
     );
   }
 
+  const specialChallenges = challenges.filter((c) => c.type === "special");
+
+  const currentWeekKey = getWeekKey(Date.now());
+
+  const visibleWeekly = challenges
+    .filter((c) => {
+      if (c.type === "special") return false;
+      // Fall back to createdAt if a challenge has no deadline set
+      const anchor = c.deadline || c.createdAt || Date.now();
+      return getWeekKey(anchor) === currentWeekKey;
+    })
+    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   return (
     <div className="dash-page">
       <header className="dash-header">
-        <p className="dash-logo">
-          THE
-          <br />
-          ARTICULATE
-          <br />
-          CLUB
-        </p>
+        <img src={logo} alt="Logo" className="logo-img" />
 
         <div className="dash-header-icons">
-          <button className="dash-icon-btn" aria-label="Notifications">
-            <Bell size={19} />
-            <span className="dash-dot" />
-          </button>
           <button
             className="dash-avatar"
             onClick={handleLogout}
@@ -111,9 +150,36 @@ export default function Dashboard() {
 
       <div className="dash-container">
         <section className="dash-greeting">
-          <h1>Hi, {profile.name?.split(" ")[0] || "Articulator"} 💚</h1>
+          <h1>Hi, {profile.name?.split(" ")[0] || "Articulator"}</h1>
           <p>Time to work on your communication skills.</p>
         </section>
+
+        {specialChallenges.length > 0 && (
+          <section className="dash-special">
+            {specialChallenges.map((challenge) => (
+              <div
+                className="dash-special-card"
+                key={challenge.id}
+                onClick={() => navigate(`/challenges/${challenge.id}`)}
+              >
+                <span className="dash-special-badge">
+                  <Sparkles size={13} /> SPECIAL CHALLENGE
+                </span>
+                <h2 className="dash-special-title">{challenge.title}</h2>
+                <p className="dash-special-desc">{challenge.description}</p>
+                <button
+                  className="dash-special-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/challenges/${challenge.id}`);
+                  }}
+                >
+                  Accept the Challenge
+                </button>
+              </div>
+            ))}
+          </section>
+        )}
 
         <section className="dash-progress">
           <p className="dash-eyebrow">YOUR PROGRESS</p>
@@ -152,18 +218,21 @@ export default function Dashboard() {
         <section className="dash-week">
           <div className="dash-section-header">
             <p className="dash-eyebrow">THIS WEEK AT THE CLUB</p>
-            <a href="/challenges" className="dash-view-all">
+            <button
+              className="dash-view-all"
+              onClick={() => navigate("/challenges")}
+            >
               View all
-            </a>
+            </button>
           </div>
 
-          {challenges.length === 0 ? (
+          {visibleWeekly.length === 0 ? (
             <div className="dash-empty-challenges">
               <p>No challenges published yet. Check back soon!</p>
             </div>
           ) : (
             <div className="dash-challenge-grid">
-              {challenges.map((challenge) => (
+              {visibleWeekly.map((challenge) => (
                 <div className="dash-challenge-card" key={challenge.id}>
                   <div className="dash-challenge-icon">
                     {challenge.type === "weeklyVocabulary" ? (
@@ -209,12 +278,48 @@ export default function Dashboard() {
         <section className="dash-recordings">
           <p className="dash-eyebrow">YOUR RECENT RECORDING</p>
 
-          <div className="dash-recordings-empty">
-            <p>You haven't submitted a recording yet.</p>
-            <p className="dash-recordings-sub">
-              Complete a speaking challenge above to see it here.
-            </p>
-          </div>
+          {recentSubmission ? (
+            <>
+              <div className="dash-recording-card">
+                <button className="dash-recording-play" onClick={togglePlay}>
+                  {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+                </button>
+
+                <div className="dash-recording-info">
+                  <h4>{recentSubmission.challengeTitle}</h4>
+                  <span>
+                    Submitted on{" "}
+                    {new Date(recentSubmission.submittedAt).toLocaleDateString(
+                      undefined,
+                      {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      },
+                    )}
+                  </span>
+                </div>
+
+                <span className="dash-recording-duration">
+                  {formatDuration(recentSubmission.durationSeconds)}
+                </span>
+              </div>
+
+              <button
+                className="dash-view-all-recordings"
+                onClick={() => navigate("/recordings")}
+              >
+                View all recordings →
+              </button>
+            </>
+          ) : (
+            <div className="dash-recordings-empty">
+              <p>You haven't submitted a recording yet.</p>
+              <p className="dash-recordings-sub">
+                Complete a speaking challenge above to see it here.
+              </p>
+            </div>
+          )}
         </section>
       </div>
     </div>

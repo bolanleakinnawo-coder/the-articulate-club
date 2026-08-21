@@ -21,7 +21,8 @@ export default function AudioRecorder({ onSubmit, submitting }) {
       recorder.onstop = () => {
         const blob = new Blob(chunksRef.current, { type: "audio/webm" });
         blobRef.current = blob;
-        setAudioUrl(URL.createObjectURL(blob));
+        const url = URL.createObjectURL(blob);
+        setAudioUrl(url);
         stream.getTracks().forEach((track) => track.stop());
       };
 
@@ -55,7 +56,7 @@ export default function AudioRecorder({ onSubmit, submitting }) {
 
   const handleSubmit = () => {
     if (blobRef.current) {
-      onSubmit(blobRef.current);
+      onSubmit(blobRef.current, seconds);
     }
   };
 

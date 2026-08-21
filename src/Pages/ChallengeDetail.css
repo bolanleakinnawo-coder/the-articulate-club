@@ -317,3 +317,120 @@
   cursor: pointer;
   margin-top: 8px;
 }
+.cd-special-banner {
+  background: var(--olive-deep);
+  border-radius: 20px;
+  padding: 34px 28px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.cd-special-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0d896;
+  color: #6b5518;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.cd-special-title {
+  color: var(--white);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.cd-special-sub {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 26px;
+}
+
+.cd-special-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 22px;
+}
+
+.cd-special-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--white);
+  font-size: 12px;
+  max-width: 120px;
+  text-align: center;
+}
+
+.cd-special-details-card {
+  background: var(--white);
+  border: 1px solid var(--sage-line);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cd-special-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+
+.cd-special-detail-row svg {
+  color: var(--olive-deep);
+  flex-shrink: 0;
+}
+
+.cd-accept-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--olive-deep);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 15px;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: background 0.25s ease;
+}
+
+.cd-accept-btn:hover {
+  background: var(--olive-deeper);
+}
+
+.cd-closing-note {
+  background: var(--sage-light);
+  border-radius: 14px;
+  padding: 18px 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cd-closing-note p {
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink);
+}

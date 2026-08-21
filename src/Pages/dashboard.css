@@ -30,19 +30,10 @@
 .dash-header {
   background: var(--white);
   border-bottom: 1px solid var(--sage-line);
-  padding: 20px 24px;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.dash-logo {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--olive-deep);
-  line-height: 1.4;
-  margin: 0;
 }
 
 .dash-header-icons {
@@ -86,7 +77,20 @@
 .dash-avatar:hover {
   background: var(--olive-deeper);
 }
+.dash-header {
+  height: 64px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  line-height: 0;
+}
 
+.dash-header .logo-img {
+  display: block;
+  width: auto;
+  height: 50px;
+  max-height: 50px;
+  object-fit: contain;
+}
 /* ---------- Container ---------- */
 .dash-container {
   max-width: 1100px;
@@ -410,15 +414,129 @@
 }
 
 @media (max-width: 500px) {
-  .dash-progress-grid {
-    grid-template-columns: 1fr;
-  }
-
   .dash-header {
     padding: 16px 18px;
   }
 
   .dash-container {
     padding: 32px 16px 70px;
+  }
+}
+.dash-special {
+  margin-bottom: 40px;
+}
+
+.dash-special-card {
+  background: var(--olive-deep);
+  border-radius: 20px;
+  padding: 34px 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dash-special-card:hover {
+  transform: translateY(-3px);
+}
+
+.dash-special-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0d896;
+  color: #6b5518;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.dash-special-title {
+  color: var(--white);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+
+.dash-special-desc {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 22px;
+  max-width: 480px;
+}
+
+.dash-special-btn {
+  background: var(--white);
+  color: var(--olive-deep);
+  border: none;
+  border-radius: 999px;
+  padding: 13px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dash-special-btn:hover {
+  background: var(--sage-light);
+}
+
+.dash-view-all {
+  background: none;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--olive-deep);
+  cursor: pointer;
+  padding: 0;
+}
+
+.dash-view-all-recordings {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--olive-deep);
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  margin-top: 12px;
+  padding: 0;
+}
+
+.dash-view-all-recordings:hover {
+  opacity: 0.75;
+}
+
+@media (max-width: 500px) {
+  .dash-progress-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .dash-stat-card {
+    padding: 16px 8px;
+  }
+
+  .dash-stat-icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 10px;
+  }
+
+  .dash-stat-value {
+    font-size: 20px;
+  }
+
+  .dash-stat-label {
+    font-size: 10.5px;
+    margin: 3px 0;
+  }
+
+  .dash-stat-sub {
+    font-size: 9px;
   }
 }

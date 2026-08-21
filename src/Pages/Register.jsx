@@ -50,7 +50,7 @@ export default function Register() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Azimah Bello"
+              placeholder="Jane Doe"
               required
             />
           </label>

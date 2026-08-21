@@ -10,6 +10,8 @@ import Login from "./Pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
 import ChallengeDetail from "./Pages/ChallengeDetail";
+import AllChallenges from "./pages/AllChallenges";
+import AllRecordings from "./pages/AllRecordings";
 
 function App() {
   return (
@@ -33,6 +35,23 @@ function App() {
         element={
           <ProtectedRoute>
             <ChallengeDetail />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/challenges"
+        element={
+          <ProtectedRoute>
+            <AllChallenges />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/recordings"
+        element={
+          <ProtectedRoute>
+            <AllRecordings />
           </ProtectedRoute>
         }
       />
