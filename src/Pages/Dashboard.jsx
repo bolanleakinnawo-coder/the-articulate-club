@@ -19,11 +19,8 @@ import {
   getMemberProfile,
   logoutLocal,
 } from "../firebase/authService";
-import {
-  getMemberRecentSubmission,
-  getWeekKey,
-} from "../firebase/challengeService";
-import "./dashboard.css";
+import { getMemberRecentSubmission } from "../firebase/challengeService";
+import "./Dashboard.css";
 import logo from "../assets/logo.png";
 
 export default function Dashboard() {
@@ -37,40 +34,47 @@ export default function Dashboard() {
 
   useEffect(() => {
     const uid = getLocalSession();
+
     if (!uid) {
       navigate("/login");
       return;
     }
 
     (async () => {
-      const challengesRef = ref(db, "challenges");
-      const publishedQuery = query(
-        challengesRef,
-        orderByChild("status"),
-        equalTo("published")
-      );
+      try {
+        const challengesRef = ref(db, "challenges");
+        const publishedQuery = query(
+          challengesRef,
+          orderByChild("status"),
+          equalTo("published"),
+        );
 
-      const [memberProfile, recent, snap] = await Promise.all([
-        getMemberProfile(uid),
-        getMemberRecentSubmission(uid),
-        get(publishedQuery),
-      ]);
+        const [memberProfile, recent, snap] = await Promise.all([
+          getMemberProfile(uid),
+          getMemberRecentSubmission(uid),
+          get(publishedQuery),
+        ]);
 
-      setProfile(memberProfile);
-      setRecentSubmission(recent);
+        setProfile(memberProfile);
+        setRecentSubmission(recent);
 
-      if (snap.exists()) {
-        const data = snap.val();
-        const list = Object.entries(data).map(([id, value]) => ({
-          id,
-          ...value,
-        }));
-        setChallenges(list);
+        if (snap.exists()) {
+          const data = snap.val();
+          const list = Object.entries(data).map(([id, value]) => ({
+            id,
+            ...value,
+          }));
+          setChallenges(list);
+        } else {
+          setChallenges([]);
+        }
+
+        setLoading(false);
+      } catch (err) {
+        console.error("Dashboard load error:", err);
+        setLoading(false);
       }
-
-      setLoading(false);
     })();
-   
   }, [navigate]);
 
   const handleLogout = () => {
@@ -122,16 +126,11 @@ export default function Dashboard() {
 
   const specialChallenges = challenges.filter((c) => c.type === "special");
 
-  const currentWeekKey = getWeekKey(Date.now());
-
   const visibleWeekly = challenges
-    .filter((c) => {
-      if (c.type === "special") return false;
-      // Fall back to createdAt if a challenge has no deadline set
-      const anchor = c.deadline || c.createdAt || Date.now();
-      return getWeekKey(anchor) === currentWeekKey;
-    })
-    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+    .filter((c) => c.type !== "special")
+    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
+    .slice(0, 2);
+
   return (
     <div className="dash-page">
       <header className="dash-header">
