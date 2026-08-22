@@ -20,7 +20,7 @@ import {
   logoutLocal,
 } from "../firebase/authService";
 import { getMemberRecentSubmission } from "../firebase/challengeService";
-import "./Dashboard.css";
+import "./dashboard.css";
 import logo from "../assets/logo.png";
 
 export default function Dashboard() {
