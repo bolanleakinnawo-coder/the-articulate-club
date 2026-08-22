@@ -10,8 +10,8 @@ import Login from "./Pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
 import ChallengeDetail from "./Pages/ChallengeDetail";
-import AllChallenges from "./pages/AllChallenges";
-import AllRecordings from "./pages/AllRecordings";
+import AllChallenges from "./Pages/AllChallenges";
+import AllRecordings from "./Pages/AllRecordings";
 
 function App() {
   return (
